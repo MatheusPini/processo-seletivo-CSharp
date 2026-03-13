@@ -1,0 +1,34 @@
+## .NET Core / Visual Studio Code .gitignore
+
+# Pastas de Compilação
+bin/
+obj/
+
+# Arquivos de publicação
+publish/
+
+# Segredos de desenvolvimento (importante não subir!)
+appsettings.Development.json
+
+# Arquivos do Visual Studio Code
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+*.code-workspace
+
+# Logs e arquivos temporários
+*.log
+.DS_Store
+.env
+
+# Docker
+.dockerignore
+
+# Entity Framework (Arquivos de log do banco local se houver)
+*.db
+*.db-shm
+*.db-wal
+
+# Ferramentas do .NET
+.dotnet/

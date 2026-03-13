@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de WebSocket - Blog</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 30px;">
+    <h2>Notificações do Blog em Tempo Real</h2>
+    
+    <div id="status" style="color: gray; font-style: italic;">Conectando ao servidor...</div>
+    
+    <ul id="messagesList" style="margin-top: 20px; font-weight: bold; color: #0066cc; font-size: 18px;"></ul>
+
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:5156/notifications")
+            .build();
+
+        connection.on("ReceiveNotification", function (message) {
+            const li = document.createElement("li");
+            li.textContent = message;
+            document.getElementById("messagesList").appendChild(li);
+        });
+
+        connection.start().then(function () {
+            document.getElementById("status").textContent = "Conectado ao WebSocket! Aguardando novas postagens...";
+            document.getElementById("status").style.color = "green";
+        }).catch(function (err) {
+            document.getElementById("status").textContent = "Erro ao conectar. verifica se a api esta rodando....";
+            document.getElementById("status").style.color = "red";
+            console.error(err.toString());
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+@HostAddress = http://localhost:5156
+
+### 1. Testa o Registro do usuario
+POST {{HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "matheuspini",
+  "password": "blogmonolitosenha"
+}
+
+###
+
+### 2. Testa o Login retornando JWT. 
+# Se o login der certo, o token JWT será retornado na resposta, 
+# caso contrario a mensagem de nao autorizado.
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "matheuspini",
+  "password": "blogmonolitosenha"
+}
+
+### Variável para o seu Token JWT. depois do login a requisicao vai mandar o token, cole na variavel abaixo
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwidW5pcXVlX25hbWUiOiJtYXRoZXVzcGluaSIsImV4cCI6MTc3MzQzNjE0MH0.c8C7iB1lngNWWvzWMVa0q8beGrnpKHdH1U82DsxrbEk
+
+
+### 3. Visualizar todas as postagens
+GET {{HostAddress}}/api/post
+
+
+### 4. Criar uma nova postagem - precisa estar autenticado
+POST {{HostAddress}}/api/post
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "title": "Minha Primeiradsdacxxxxxxxxxsd Postagem",
+  "content": "Postagem para testar criacao de posts para o processo seletivo"
+}
+
+
+### 5. Editar uma postagem  - precisa estar autenticado
+PUT {{HostAddress}}/api/post/2
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "title": "Título Atualizado da Postagem",
+  "content": "Postamgem para testar atualizacao de posts para o processo seletivo"
+}
+
+
+### 6. Excluir uma postagem  - precisa estar autenticado
+DELETE {{HostAddress}}/api/post/2
+Authorization: Bearer {{Token}}
