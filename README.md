@@ -1,5 +1,5 @@
 ````markdown
-# 🚀 BlogMonolito API
+# 🚀 processo-seletivo-CSharp API
 
 Sistema de blog desenvolvido em **C# (.NET 8)** com **arquitetura monolítica organizada**, aplicando boas práticas de engenharia de software como **SOLID**, **Entity Framework Core** e **notificações em tempo real via WebSockets (SignalR)**.
 
@@ -27,7 +27,7 @@ dotnet tool install --global dotnet-ef
 
 ```bash
 git clone <url-do-repositorio>
-cd BlogMonolito
+cd processo-seletivo-CSharp
 ```
 
 ---
@@ -54,6 +54,11 @@ Caso o comando `dotnet-ef` não seja reconhecido em **Mac/Linux**, execute:
 
 ```bash
 export PATH="$PATH:$HOME/.dotnet/tools"
+```
+
+Restaura dependencia se for necessario
+```bash
+dotnet restore
 ```
 
 Depois aplique as migrations:
@@ -196,6 +201,6 @@ Este projeto foi desenvolvido com foco em demonstrar:
 
 ---
 
-# 👨‍💻 Autor
+# 👨‍💻 Autor - Matheus Pini
 
 Projeto desenvolvido para fins de **estudo, demonstração técnica e portfólio**.
