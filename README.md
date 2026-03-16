@@ -5,6 +5,31 @@ Sistema de blog desenvolvido em **C# (.NET 8)** com **arquitetura monolítica or
 
 ---
 
+## Respostas as perguntas
+
+### 1. O C# não permite herança múltipla de classes para evitar conflitos estruturais. Em vez disso, utiliza a implementação de múltiplas interfaces para herdar comportamentos de forma segura.
+
+### 1.1. É a capacidade de tratar objetos filhos como se fossem da classe pai, mas executando o comportamento específico de cada um. Exemplo: Uma lista de Pagamento chamando Processar(), onde o C# decide em tempo de execução se aplica a regra de Cartão ou Pix.
+
+### 2. O SRP define que uma classe deve ter apenas um motivo para mudar. Em C#, isso significa separar Controllers (rotas), Services (regras de negócio) e Repositories (banco de dados).
+
+### 2.2. Módulos principais devem depender de abstrações, e não de implementações concretas. No C#, injetamos essas interfaces nos construtores, o que facilita manutenções, criação de testes e troca de tecnologias.
+
+### 3. Funciona como um tradutor ORM. Ele mapeia automaticamente classes C# para tabelas do banco e converte consultas feitas com LINQ para comandos SQL.
+
+### 3.1. Otimizamos usando .AsNoTracking() para consultas de leitura, aplicamos paginação, carregamos relações apenas quando necessário e selecionamos apenas colunas específicas.
+
+### 4. Diferente do HTTP, onde o cliente sempre precisa perguntar por atualizações, os WebSockets mantêm uma conexão aberta e bidirecional. Isso permite que o servidor envie notificações ativas e em tempo real para o cliente.
+
+### 4.1. É essencial utilizar conexões criptografadas, autenticar os usuários, validar rigorosamente todos os dados recebidos e limitar a frequência de mensagens para evitar ataques.
+
+### 5. O monolito unifica toda a aplicação em um único projeto, enquanto microsserviços a dividem em pequenos serviços independentes. Para este blog simples, o monolito é a melhor escolha pela agilidade e simplicidade de implantação.
+
+### 5.1. Para altíssima escalabilidade, a escolha ideal são os microsserviços. Eles permitem escalar apenas as partes da aplicação que recebem muito tráfego (como notificações), sem desperdiçar recursos replicando o sistema inteiro.
+
+
+---
+
 # 📋 Pré-requisitos
 
 Antes de iniciar, certifique-se de possuir os seguintes itens instalados:
